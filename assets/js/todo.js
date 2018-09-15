@@ -1,33 +1,57 @@
-var lis = document.querySelectorAll("li");
+class Todo { // a simple todo
+    constructor(content, parent){
+        this.content = content;
+        this.li = document.createElement('li');
+        this.deleteButton = document.createElement('span');
+        this.liContent = document.createElement('span');
 
-function init(){
+        this.buildLI();
+        this.addToParent(parent);
+    }
 
-    setListeners();
-}
+    buildLI() {
+        // Delete button content
+        this.deleteButton.innerHTML = "<i class='fa fa-trash'> </i> ";
+        this.deleteButton.classList.add("bth-delete");
 
+        // li content
+        this.liContent.textContent = this.content;
 
-// init functions
-function setListeners(){
-    for(var i = 0; i < lis.length; i++){
-        lis[i].addEventListener("click", toggleDoneOnClick); //click event
-        lis[i].addEventListener("transitionend", function(){this.remove()}); // remove after fadeout
+        this.addToLI();
+        this.addListeners();
+    }
 
-        var deleteButton = lis[i].querySelector("span");
-        deleteButton.addEventListener("click", deleteButtonOnClick); // starts fade out
+    
+    //click functions
+    liContentOnclick(){
+        this.classList.toggle("done");
+    }
+    
+    deleteButtonOnClick(){
+        this.parentNode.classList.toggle("remove");
+    }
+    
+    //constructor functions
+    addToLI(){
+        this.li.appendChild(this.deleteButton);
+        this.li.appendChild(this.liContent);
+    }
+
+    addListeners(){
+        this.liContent.addEventListener("click", this.liContentOnclick); // add to todo
+        
+        this.deleteButton.addEventListener("click", this.deleteButtonOnClick); //to fade out
+        this.li.addEventListener("transitionend", this.removeIt); // remove after transition
+    }
+
+    addToParent(parent){
+        parent.appendChild(this.li);
+    }
+
+    //aux functions
+    removeIt(){
+        if (this.classList.contains("remove")){
+            this.remove();
+        }
     }
 }
-
-// click functions
-function toggleDoneOnClick(){
-    this.classList.toggle("done");
-}
-
-function deleteButtonOnClick(event){
-    var li = this.parentNode;
-    li.classList.add("remove");
-    // li.remove();
-    event.stopPropagation(); // avoid other parent listeners
-}
-
-// starts
-init();

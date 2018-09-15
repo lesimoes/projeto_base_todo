@@ -3,7 +3,19 @@ body{
 }
 
 #container{
-    background-color: gray;
+    border: 2px solid grey;
     width: 360px;
     margin: 0 auto;
+}
+
+.done{
+    color:gray;
+    text-decoration: line-through;
+}
+
+.remove{
+    opacity: 0;
+    transition: opacity 500ms;
+    -webkit-transition: opacity 500ms;
+    -moz-transition: opacity 500ms;
 }

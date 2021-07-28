@@ -9,7 +9,11 @@
 </head>
 <body>
     <div class="container">
-        <h1>To-do List (3)</h1>
+        <div class="header">
+            <h1>To-do List (3)</h1>
+            <button><ion-icon name="trash-outline"></ion-icon></button>
+        </div>
+        
         
         <div class="title">
             <input type="text" placeholder="Add New To-do">
@@ -22,21 +26,21 @@
                 <div class="btn-delete">
                     <ion-icon name="trash-outline"></ion-icon>
                 </div>
-                <span>Adicione uma tarefa no botão acima ☝️</span>
+                <span onclick="finalizarTarefa(this)">Adicione uma tarefa no botão acima ☝️</span>
             </li>
 
             <li>
                 <div class="btn-delete">
                     <ion-icon name="trash-outline"></ion-icon>
                 </div>
-                <span>Passe o mouse na tarefa para ver o botão excluir 🗑️</span>
+                <span onclick="finalizarTarefa(this)">Passe o mouse na tarefa para ver o botão excluir 🗑️</span>
             </li>
 
             <li>
                 <div class="btn-delete">
                     <ion-icon name="trash-outline"></ion-icon>
                 </div>
-                <span>Clique na tarefa para marca-la como feita ✔️</span>
+                <span onclick="finalizarTarefa(this)">Clique na tarefa para marca-la como feita ✔️</span>
             </li>
         </ul>
     </div>

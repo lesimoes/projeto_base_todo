@@ -44,7 +44,6 @@ body{
 }
 
 h1{
-    background: #1C1A22;
     color: #ecf0f1;
     font-size: 24px;
     font-weight: normal;
@@ -126,4 +125,37 @@ li:hover div.btn-delete{
 .finalizada {
     text-decoration: line-through;
     font-style: italic;   
+}
+
+.header  {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1C1A22;
+    position: relative;
+}
+
+.header h1 {
+    width: 100%;
+}
+
+.header button {
+    background-color: rgba(248,208,123,1);
+    color: black;
+    padding: 4px;
+    margin: 0 10px;
+    border: none;
+    font-weight: bold;
+    font-size: 18px;
+    position: absolute;
+    right: 0;
+}
+
+.header button:hover {
+    cursor: pointer;
+    filter: brightness(90%);
+}
+
+.header button:active {
+    transform: translateY(4px);
 }

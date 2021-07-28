@@ -68,9 +68,13 @@ function atualizarContador() {
 }
 
 function limparTarefas() {
+    
+    const tarefas = document.querySelectorAll("li");
+    for (let i = 0 ; i < tarefas.length ; i ++) {
+        tarefas[i].classList.add("finalizada");
+    }
+    
     contador = 0;
-
-    document.querySelector("ul").innerHTML = "";
     atualizarContador();
 }
 

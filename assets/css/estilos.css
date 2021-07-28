@@ -97,6 +97,10 @@ li:hover div.btn-delete{
     opacity: 1.0;
 }
 
+li:hover {
+    cursor: pointer;
+}
+
 .done{
     color:gray;
     text-decoration: line-through;

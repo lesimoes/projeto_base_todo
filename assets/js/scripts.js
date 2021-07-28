@@ -1,5 +1,10 @@
 let contador = 3;
 
+
+function adicionarTarefaDelay () {
+    setTimeout(adicionarTarefa, 600);
+}
+
 function finalizarTarefa(elemento) {
 
     const li = elemento.parentNode;
@@ -53,6 +58,8 @@ function adicionarTarefa () {
     </li>`;
 
     input.value = "";
+    contador ++;
+    atualizarContador();
 }
 
 function atualizarContador() {
@@ -61,12 +68,6 @@ function atualizarContador() {
 }
 
 function limparTarefas() {
-    const tarefas = document.querySelectorAll("li");
-    let index = 0;
-    while (index < tarefas.length) {
-        tarefas[index].classList.remove("finalizada");
-        index++;
-    }
     contador = 0;
 
     document.querySelector("ul").innerHTML = "";

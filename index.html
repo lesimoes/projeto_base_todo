@@ -5,22 +5,46 @@
     <title>Todo List</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500, 700" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/todos.css" />
-    <script type="text/javascript" src="assets/js/libs/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/estilos.css" />
 </head>
 <body>
-    <div id="container">
-        <h1>To-do List <i id="add-button" class="fas fa-caret-up"></i></h1>
-        <input type="text" placeholder="Add New To-do">
+    <div class="container">
+        <h1>To-do List (3)</h1>
+        
+        <div class="title">
+            <input type="text" placeholder="Add New To-do">
+            <button>Add</button>
+        </div>
+        
         <ul>
+
+            <li>
+                <div class="btn-delete">
+                    <ion-icon name="trash-outline"></ion-icon>
+                </div>
+                <span>Adicione uma tarefa no botão acima ☝️</span>
+            </li>
+
+            <li>
+                <div class="btn-delete">
+                    <ion-icon name="trash-outline"></ion-icon>
+                </div>
+                <span>Passe o mouse na tarefa para ver o botão excluir 🗑️</span>
+            </li>
+
+            <li>
+                <div class="btn-delete">
+                    <ion-icon name="trash-outline"></ion-icon>
+                </div>
+                <span>Clique na tarefa para marca-la como feita ✔️</span>
+            </li>
         </ul>
     </div>
 
 
 
-    
-    <script type="text/javascript" src="assets/js/todo.js"></script>
-    <script type="text/javascript" src="assets/js/main.js"></script>
+    <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <script type="text/javascript" src="assets/js/scripts.js"></script>
 </body>
 </html>

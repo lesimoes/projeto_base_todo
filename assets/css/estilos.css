@@ -124,7 +124,12 @@ li:hover div.btn-delete{
 
 .finalizada {
     text-decoration: line-through;
-    font-style: italic;   
+    font-style: italic;
+    background-color: #A3A1AF;
+}
+
+li.finalizada:nth-child(2n){
+    background-color: #A3A1AF;
 }
 
 .header  {

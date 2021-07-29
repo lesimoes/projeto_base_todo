@@ -21,6 +21,29 @@ body{
     margin: 0 auto;
     width: 560px;
 }
+.bottom{
+    background-color: #ecf0f1;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    width: 160px;
+    height: 40px;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 4px 4px 1px #1C1A22;
+    position: fixed;
+    bottom: -40px;
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 300ms linear;
+    cursor: pointer;
+}
+
+.show-alert {
+    bottom: 0;
+    opacity: 1;
+}
+
 
 .title {
     display: flex;

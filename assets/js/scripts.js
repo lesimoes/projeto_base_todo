@@ -1,5 +1,7 @@
 let contador = 3;
 let idAlertaChato;
+let tarefas = [];
+
 
 function finalizarTarefa (elemento) {
     
@@ -20,32 +22,46 @@ function finalizarTarefa (elemento) {
 }
 
 
-function adicionarTarefasDemo () {
-    const tarefas = [
-        "Adicione uma tarefa no botão acima ☝️",
-        "Passe o mouse na tarefa para ver o botão excluir 🗑️",
-        "Clique na tarefa para marca-la como feita ✔️",
-        
-    ];
+function adicionarTarefa () {
+    const inputs = document.querySelectorAll(".title input");
+ 
+    const tarefa = inputs[0].value;
+    const tempo = inputs[1].value;
+    
+    tarefas.push({tarefa: tarefa, time: tempo, idInterval: 0})
+    atualizarDOMTarefas()
+}
+
+
+function atualizarDOMTarefas () {
 
     const ul = document.querySelector("ul");
-
    
     let tarefaHTML = "";
-    
-     
 
     for (let i = 0 ; i < tarefas.length ; i++){
-        tarefaHTML += `<li>
+        if (tarefas[i]) {
+            tarefaHTML += `<li id="${i}">
             <div class="btn-delete" onclick="deletarTarefa(this)">
                 <ion-icon name="trash-outline"></ion-icon>
             </div>
-            <span onclick="finalizarTarefa(this)">${tarefas[i]}</span>
+            <span onclick="finalizarTarefa(this)">${tarefas[i].tarefa}</span>
+            <span onclick="iniciarContador(this)">${tarefas[i].tempo}</span>
         </li>`;
+        }
     }
 
     ul.innerHTML = tarefaHTML;
+}
 
+function adicionarTarefasDemo () {
+    tarefas = [
+        {tarefa: "Adicione uma tarefa no botão acima ☝️", tempo: 30, idInterval: 0},
+        {tarefa: "Passe o mouse na tarefa para ver o botão excluir 🗑️", tempo: 25, idInterval: 0},
+        {tarefa: "Clique na tarefa para marca-la como feita ✔️", tempo: 20, idInterval: 0},
+    ];
+
+    atualizarDOMTarefas();
 }
 
 function finalizarTarefas () {
@@ -71,8 +87,36 @@ function deletarTarefa (elemento) {
     const li = elemento.parentNode;
     li.classList.add("remove");
     setTimeout(function(){
-        li.remove();
+        tarefas[li.id] = "";
+        atualizarDOMTarefas();
     }, 500)
+}
+
+function iniciarContador (elemento) {
+    const li = elemento.parentNode;
+    if (tarefas[li.id].idInterval === 0) {
+        const idInterval = setInterval(decrementarContador, 1000, li.id);
+        tarefas[li.id].idInterval = idInterval;
+    } else {
+        pararContador(li.id);
+    } 
+
+}
+
+function decrementarContador (idTarefa) {
+    tarefas[idTarefa].tempo --;
+    if (tarefas[idTarefa].tempo === 0) {
+        const idInterval = tarefas[idTarefa].idInterval;
+        tarefas[idTarefa].idInterval = 0;
+        clearInterval(idInterval);
+    }
+    atualizarDOMTarefas();
+}
+
+function pararContador (idTarefa) {
+    const idInterval = tarefas[idTarefa].idInterval;
+    tarefas[idTarefa].idInterval = 0;
+    clearInterval(idInterval);
 }
 
 function alertChato () {
